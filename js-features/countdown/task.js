@@ -1,4 +1,4 @@
-let startTimerValue = document.getElementById('timer');
+const startTimerValue = document.getElementById('timer');
 
 let timerId = setInterval(function() {
 	--startTimerValue.textContent;

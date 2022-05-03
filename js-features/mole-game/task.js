@@ -1,8 +1,14 @@
-let deadMoleCounter = document.getElementById('dead');
-let lostCounter = document.getElementById('lost');
+const deadMoleCounter = document.getElementById('dead');
+const lostCounter = document.getElementById('lost');
 
 function getHole(index) {
 	return document.getElementById(`hole${index}`);
+}
+
+function getZeroing(messsage) {
+	alert(messsage);
+	deadMoleCounter.textContent = 0;
+	lostCounter.textContent = 0;
 }
 
 for (let i = 1; i <= 9; i++) {
@@ -16,20 +22,12 @@ for (let i = 1; i <= 9; i++) {
 			lostCounter.textContent = +lostCounter.textContent + 1;
 		}
 
-
-		//почему сперва появляется alert Победа! или Вы проиграли, и только потом 
-		//значение соответствующего счетчика показывает 5 или 10 ? 
-		//как это исправть?
 		if(deadMoleCounter.textContent == 5) {
-			alert('Победа!');
-			deadMoleCounter.textContent = 0;
-			lostCounter.textContent = 0;
+			getZeroing('Победа!');
 		}
 	
 		if(lostCounter.textContent == 10) {
-			alert('Вы проиграли');
-			deadMoleCounter.textContent = 0;
-			lostCounter.textContent = 0;
+			getZeroing('Вы проиграли');
 		}
 	}
 }

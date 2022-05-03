@@ -1,8 +1,9 @@
-let clickCounter = document.getElementById('clicker__counter');
+const clickCounter = document.getElementById('clicker__counter');
 
-let cookieImg = document.getElementById('cookie');
+const cookieImg = document.getElementById('cookie');
 
 cookieImg.onclick = function() {
+
 	if(cookieImg.width == 200) {
 		cookieImg.width = 300;
 	} else {
