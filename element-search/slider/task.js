@@ -19,9 +19,7 @@ sliderArrowNext.onclick = function() {
 
 const slides = document.querySelectorAll('.slider__item');
 let slider = Array.from(slides);
-// console.log(slider);
-// console.log( slider.indexOf( document.querySelector('.slider__item_active') ) );
 
-for(let i = 0; i < slider.length; i++) {
-	console.log(slider[i]);
-}
+// console.log(slider.indexOf(document.querySelector('.slider__item_active')));
+step = slider.indexOf(document.querySelector('.slider__item_active'));
+console.log(step);
