@@ -3,13 +3,16 @@ const menuLinks = document.querySelectorAll('.menu__link');
 for (let i = 0; i <= menuLinks.length; i++) {
 	let menuLink = menuLinks[i];
 
-	menuLink.onclick = function() {
-		let menuSub = menuLink.closest('.menu_sub');
+	let menuItem = menuLink.closest('.menu__item');
+	// console.log(menuItem);
+	let subMenu = menuItem.closest('.menu_sub');
+	console.log(subMenu);
 
-		if(menuSub) {
-			menuSub.classList.add('menu_active');
+	menuLink.onclick = function() {
+		if(subMenu) {
+			// console.log('Hi');
+			subMenu.classList.toggle('menu_active');
 			return false;
 		}
 	}
-
 }
