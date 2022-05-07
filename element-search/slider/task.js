@@ -1,25 +1,33 @@
 const sliderArrowPrev = document.querySelector('.slider__arrow_prev');
 const sliderArrowNext = document.querySelector('.slider__arrow_next');
+const sliders = document.querySelectorAll('.slider__item');
+const lastIndex = sliders.length - 1;
 
 let step = 0;
 sliderArrowPrev.onclick = function() {
-	console.log(step);
-	step--;
-	if(step < 0) {
-		step = slider.length;
+	if (step <= 0) {
+		step = lastIndex;
+	} else {
+		step--;
 	}
+
+	setActiveImage(step);
 }
+
 sliderArrowNext.onclick = function() {
-	console.log(step);
-	step++;
-	if(step == slider.length + 1) {
+	if (step === lastIndex) {
 		step = 0;
+	} else {
+		step++;
 	}
+
+	setActiveImage(step);
 }
 
-const slides = document.querySelectorAll('.slider__item');
-let slider = Array.from(slides);
-
-// console.log(slider.indexOf(document.querySelector('.slider__item_active')));
-step = slider.indexOf(document.querySelector('.slider__item_active'));
-console.log(step);
+setActiveImage = function(step) {
+	for (let i = 0; i < sliders.length; i++) {
+		const slide = sliders[i];
+		slide.classList.remove("slider__item_active");
+	}
+		sliders[step].classList.add("slider__item_active");
+}
