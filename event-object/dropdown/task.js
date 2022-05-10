@@ -6,10 +6,6 @@ function toggleClassList() {
 	dropdownList.classList.toggle("dropdown__list_active");
 }
 
-function closeClassList() {
-	dropdownList.classList.remove("dropdown__list_active");
-}
-
 dropdownValue.addEventListener('click', toggleClassList);
 
 for(let i = 0; i < dropdownItems.length; i++) {
