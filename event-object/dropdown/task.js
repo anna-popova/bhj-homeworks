@@ -10,12 +10,11 @@ dropdownValue.addEventListener('click', toggleClassList);
 
 //замена значения по выбору соответствующего пункта меню
 function changeValue(event) {
-	//!не понимаю, почему на долю секунды я вижу в консоле hi, а потом все исчезает?
-	console.log('hi')
+	event.preventDefault();
+
 	let target = event.target;
 
 	dropdownList.classList.remove("dropdown__list_active");
-	//!также почему на долю секунды происходит смена наименования, а потом меняется обратно?
 	dropdownValue.textContent = target.textContent;
 
 	return false;
