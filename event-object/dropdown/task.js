@@ -2,25 +2,25 @@ const dropdownValue = document.querySelector('.dropdown__value');
 const dropdownList = document.querySelector('.dropdown__list');
 const dropdownItems = Array.from(document.querySelectorAll('.dropdown__item'));
 
+//сворачивание/разворачивание списка по нажатию на кнопку
 function toggleClassList() {
 	dropdownList.classList.toggle("dropdown__list_active");
 }
-
 dropdownValue.addEventListener('click', toggleClassList);
 
-for(let i = 0; i < dropdownItems.length; i++) {
-	dropdownItem = dropdownItems[i];
-	const dropdownLink = dropdownItem.querySelector('.dropdown__link');
+//замена значения по выбору соответствующего пункта меню
+function changeValue(event) {
+	//!не понимаю, почему на долю секунды я вижу в консоле hi, а потом все исчезает?
+	console.log('hi')
+	let target = event.target;
 
-	//насколько я понимаю, function changeValueName() не должна располагаться в цикле.
-	//но если вынести ее за пределы, как она получит доступ к dropdownLink за пределами цикла???
-	function changeValueName() {
-		dropdownList.classList.remove("dropdown__list_active");
-		dropdownValue.textContent = dropdownLink.textContent;
-		return false;
-	}
+	dropdownList.classList.remove("dropdown__list_active");
+	//!также почему на долю секунды происходит смена наименования, а потом меняется обратно?
+	dropdownValue.textContent = target.textContent;
 
-	//на доли секунды текстовое содержание кнопки .dropdown__value меняется, но потом меняется обратно
-	//не совсем понимаю, почему так
-	dropdownItem.addEventListener('click', changeValueName);
+	return false;
 }
+
+dropdownItems.forEach(elem => {
+	elem.addEventListener('click', changeValue);
+})
