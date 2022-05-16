@@ -7,7 +7,7 @@ bookControls.forEach(elem => {
 	elem.addEventListener('click', (event) => {
 		event.preventDefault();
 
-		// elem.classList.toggle('font-size_active');
+		elem.classList.toggle('font-size_active');
 
 		if (elem.classList.contains('font-size_small')) {
 			book.classList.add('book_fs-small');
