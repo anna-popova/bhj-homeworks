@@ -7,7 +7,10 @@ bookControls.forEach(elem => {
 	elem.addEventListener('click', (event) => {
 		event.preventDefault();
 
-		elem.classList.toggle('font-size_active');
+		const fontSizeActive = document.querySelector('.font-size_active');
+		fontSizeActive.classList.remove('font-size_active');
+
+		elem.classList.add('font-size_active');
 
 		if (elem.classList.contains('font-size_small')) {
 			book.classList.add('book_fs-small');
