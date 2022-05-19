@@ -94,4 +94,5 @@
   box-sizing: border-box;
   letter-spacing: 1px;
   font-size: 13px;
+  cursor: pointer;
 }
