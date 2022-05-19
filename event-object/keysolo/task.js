@@ -25,22 +25,14 @@ class Game {
       При неправильном вводе символа - this.fail();
      */
 	 document.addEventListener('keyup', (event) => {
-		 let requiredSymbol = document.querySelector('.symbol_current').textContent.toLowerCase();
-		 console.log(requiredSymbol);
+		 let requiredSymbol = this.currentSymbol.textContent.toLowerCase();
 		 let inputSymbol = event.key.toLowerCase();
-		 console.log(inputSymbol);
 
 		 if (requiredSymbol === inputSymbol) {
 			this.success();
 		 } else {
 			this.fail();
 		 }
-
-		 console.log(this);
-
-		 //??? почему класс .symbol_current не переключается на следующую букву???
-
-		 //??? почему меняется слово после введения второго символа???
 	 });
   }
 
