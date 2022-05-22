@@ -1,14 +1,17 @@
 const reveals = Array.from((document.querySelectorAll('.reveal')));
-// console.log(reveals);
 
 window.addEventListener('scroll', function() {
 	for (const reveal of reveals) {
-		// console.log(reveal.getBoundingClientRect());
-
 		const {top, bottom} = reveal.getBoundingClientRect();
 
-		if (bottom > 0 || top < this.window.innerHeight) {
+		//чтобы эдемент появлялся, когда страница прокрутится до элемента:
+		if (top < this.window.innerHeight) {
 			reveal.classList.add('reveal_active');
+		}
+
+		//чтобы элемент исчезал, когда страница прокрутится ниже или выше элемента:
+		if (bottom < 0 || top > this.window.innerHeight) {
+			reveal.classList.remove('reveal_active');
 		}
 	}
 });
