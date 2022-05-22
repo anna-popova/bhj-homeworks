@@ -4,7 +4,8 @@ hasTooltipLinks.forEach(item => {
 	item.addEventListener('click', (event) => {
 		event.preventDefault();
 
-		// let { left } = item.getBoundingClientRect();
+		let { top, left } = item.getBoundingClientRect();
+		// console.log(top);
 		// console.log(left);
 
 		let tooltip = document.createElement('div');
@@ -12,17 +13,12 @@ hasTooltipLinks.forEach(item => {
 		tooltip.classList.add('tooltip');
 		tooltip.classList.toggle('tooltip_active');
 
-		// console.log(tooltip.getBoundingClientRect().left);
-		// tooltip.getBoundingClientRect().left = left;
+		tooltip.style.left = left + 'px';
+		tooltip.style.top = (top + 18) + 'px';
 
+		//каждый раз при нажатии на ссылку, у меня добавляется подсказка
+		//т.е. в итоге у меня может быть много подсказок
+		//? как мне реализовать удаление подсказки после повторного нажатия на ссылку
 		item.insertAdjacentElement('afterend', tooltip);
 	})
 })
-
-//!вопрос 1
-//как сделать так, чтобы при клике на ссылку подсказка появлялась и исчезала. сейчас она у меня только появляется
-//мое решение - код на стр. 13. но toggle не срабатывает.
-
-//!вопрос 2
-//не понимаю, как размещать подсказку в зависимости от положения текста
-//пыталась присвоить значение left (стр. 16), но этот код не работает
