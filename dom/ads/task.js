@@ -1,12 +1,19 @@
 const rotatorCases = Array.from(document.querySelectorAll('.rotator__case'));
-console.log(rotatorCases);
+// console.log(rotatorCases);
 
 function toggleClass() {
-	rotatorCases.forEach(elem => {
-		elem.classList.toggle('rotator__case_active');
-	})
-}
+	const rotatorCaseActive = document.querySelector('.rotator__case_active');
+	const nextRotatorCase = rotatorCaseActive.nextElementSibling;
 
-// toggleClass();
+	let activeCaseIndex = rotatorCases.findIndex((item) => item.classList.contains('rotator__case_active'));
+	// console.log(activeCaseIndex);
+
+	rotatorCaseActive.classList.remove('rotator__case_active');
+	if (activeCaseIndex === rotatorCases.length - 1) {
+		rotatorCases[0].classList.add('rotator__case_active');
+	} else {
+		nextRotatorCase.classList.add('rotator__case_active');
+	}
+}
 
 setInterval(toggleClass, 1000);
