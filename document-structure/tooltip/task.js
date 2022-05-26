@@ -16,7 +16,7 @@ hasTooltipLinks.forEach(item => {
 	item.addEventListener('click', (event) => {
 		event.preventDefault();
 
-		let tooltip = document.querySelector('tooltip');
+		let tooltip = document.querySelector('.tooltip');
 		let { top, left } = item.getBoundingClientRect();
 
 		if (!tooltip) {
