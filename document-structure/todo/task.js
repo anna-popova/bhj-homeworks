@@ -14,20 +14,12 @@ tasksAddButton.addEventListener('click', (e) => {
 
 	taskInput.value = '';
 
-	const taskRemoveButtons = Array.from(document.querySelectorAll('.task__remove'));
-
-	//Поэтому вам приходится перебирать все элементы крестиков и на каждый добавлять обработчик события.
-	//Если воспользуетесь методом insertAdjacentHTML, то разметка не будет полностью обновляться. 
-	//Будет добавляться новая разметка, а следовательно обработчики событий сохранятся и вам необходимо 
-	//будет добавлять слушатель события только на добавленный элемент.
-	//!ну мне в любом случае надо перебирать все крестики, иначе как я навешу событие на каждый из них
-	//!если их много, то в любои случае приходится их собирать в массив и проходиться по массиву
-	taskRemoveButtons.forEach(item => {
-		item.addEventListener('click', (e) => {
-			e.preventDefault();
+	const taskRemoveButton = document.querySelector('.task__remove');
 	
-			let itemParent = item.parentElement;
-			itemParent.remove();
-		})
+	taskRemoveButton.addEventListener('click', (e) => {
+		e.preventDefault();
+
+		let taskRemoveButtonParent = taskRemoveButton.parentElement;
+		taskRemoveButtonParent.remove();
 	})
 });
