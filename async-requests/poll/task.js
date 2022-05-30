@@ -9,16 +9,13 @@ xhr.send();
 
 xhr.addEventListener('readystatechange', () => {
 	let responseObj = xhr.response;
+
+	pollTitle.textContent = responseObj.data.title;
+
 	if(xhr.readyState === xhr.DONE) {
-		console.log(responseObj.data.answers);
-
+		// console.log(responseObj.data.answers);
 		for (let answer of responseObj.data.answers) {
-			console.log(answer);
+			pollAnswers.insertAdjacentHTML('beforeend', `<button class="poll__answer">${answer}</button>`);
 		}
-
-		pollTitle.textContent = responseObj.data.title;
-
-		//?как добавить кнопки, если их количество не всегда одинаковое? а зависит от того, сколько ответов будет у вопроса?
-		//pollAnswers.insertAdjacentHTML('beforeend', `<button class="poll__answer">Хорошо</button><button class="poll__answer">Отлично</button><button class="poll__answer">Я люблю собак</button><button class="poll__answer">Кто тут?</button>`)
 	}
-})
+});
