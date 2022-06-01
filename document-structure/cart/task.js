@@ -13,7 +13,7 @@ productQuantityControlsDec.forEach(item => {
 			productQuantityValue.textContent = 1;
 		}
 	})
-})
+});
 
 productQuantityControlsInc.forEach(item => {
 	item.addEventListener('click', () => {
@@ -28,19 +28,15 @@ productAddButton.forEach(item => {
 		const productAmount = productItem.querySelector('.product__quantity-value');
 		const cartProductsCollection = Array.from(cartProducts.getElementsByClassName('cart__product'));
 
-		//Если продукт не был найден, то добавляйте
-		//?почему не добавляется продукт?
-		if (cartProductsCollection.find(item => item.dataset.id !== productItem.dataset.id)) {
-			cartProducts.insertAdjacentHTML('beforeend', `<div class="cart__product" data-id="${productItem.dataset.id}"><img class="cart__product-image" src="${productImg.src}"><div class="cart__product-count">${+productAmount.textContent}</div>`);
+		const productInCart = cartProductsCollection.find(item => item.dataset.id === productItem.dataset.id);
+
+		if (productInCart) {
+			//Если продукт был найден, то увеличиваем количество позиций в нём
+			const productInCartCount = cartProducts.querySelector('.cart__product-count');
+			productInCartCount.textContent = productAmount.textContent;
 		} else {
-			//Если продукт был найден, то увеличивайте количество позиций в нём
+			//Если продукт не найден, добавляем в корзину
+			cartProducts.insertAdjacentHTML('beforeend', `<div class="cart__product" data-id="${productItem.dataset.id}"><img class="cart__product-image" src="${productImg.src}"><div class="cart__product-count">${+productAmount.textContent}</div>`);
 		}
-
-		console.log(cartProductsCollection);
-
-		// console.log(cartProductsCollection[0].dataset.id);
-		// console.log(productItem.dataset.id);
-		// console.log(cartProductsCollection[1].dataset.id);
-		// console.log(productItem.dataset.id);
 	})
 })
