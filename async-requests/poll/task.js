@@ -10,12 +10,15 @@ xhr.send();
 xhr.addEventListener('readystatechange', () => {
 	let responseObj = xhr.response;
 
-	pollTitle.textContent = responseObj.data.title;
-
 	if(xhr.readyState === xhr.DONE) {
+		pollTitle.textContent = responseObj.data.title;
 		// console.log(responseObj.data.answers);
 		for (let answer of responseObj.data.answers) {
 			pollAnswers.insertAdjacentHTML('beforeend', `<button class="poll__answer">${answer}</button>`);
 		}
 	}
+});
+
+pollAnswers.addEventListener('click', () => {
+	alert('Спасибо, ваш голос засчитан!');
 });
