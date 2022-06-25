@@ -2,9 +2,10 @@ const form = document.getElementById('signin__form');
 const userID = document.getElementById('user_id');
 const welcomeModal = document.getElementById('welcome');
 
-// window.onload = function() {
-// 	console.log(localStorage.id);
-// }
+function welcomeUser() {
+	form.classList.add('welcome');
+	welcomeModal.classList.add('welcome_active');
+}
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -23,11 +24,11 @@ form.addEventListener('submit', (e) => {
 
 		if(responseObj.user_id) {
 			userID.textContent = responseObj.user_id;
-			form.classList.add('welcome');
-			welcomeModal.classList.add('welcome_active');
+			
+			welcomeUser();
 
-			// localStorage.setItem('id', userID.textContent);
-			// console.log(localStorage.id);
+			localStorage.setItem('id', userID.textContent);
+			// console.log(localStorage);
 		} else {
 			alert('Неверный логин/пароль');
 		}
@@ -35,4 +36,14 @@ form.addEventListener('submit', (e) => {
 
 	form.reset();
 });
+
+window.onload = function() {
+	const userId = localStorage.getItem('id');
+	console.log(userId);
+
+	if(userId) {
+		userID.textContent = userId;
+		welcomeUser();
+	}
+}
 
